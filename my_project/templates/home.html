@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+
+
+{% block title %} Home {% endblock %} 
+
+
+{% block content %}
+<h1 style="text-align: center; margin-top: 20px; font-weight:600">Welcome! to my Django Project</h1>
+<div class="home">
+  {% comment %} <h3>Find out who I am on my <a href="/about">About</a> page.</h3> {% endcomment %}
+
+  <div class="grid-container">
+    <div>
+    <h3>Already an User ? <a class="list" href="/user/login">Login</a> Here.</h3>
+  </div>
+  <div>
+    <h3>If you are a New User <a  class="list" href="/user/register">Register</a> Here.</h3>
+  </div>
+    {% comment %} <h3>Add your <a href="/admin">Posts</a> Here.</h3>
+    <h3>Check out your <a href="/posts">Posts</a> Here.</h3> {% endcomment %}
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        Django App
+        {% endblock  %}
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static "js/main.js" %}" defer></script>
+    <script src="https://kit.fontawesome.com/bfb39aef76.js" crossorigin="anonymous"></script>
+</head>
+<body>
+{% if not request.path == '/' %}  
+<nav>
+    {% if user.is_authenticated %}
+    <a href="/about/" class="{% if request.path == '/about/' %}active{% endif %}">
+        <i class="fa-solid fa-address-card"></i> About
+    </a> 
+    <a href="/posts/list/" class="{% if request.path == '/posts/list/' %}active{% endif %}">
+        <i class="fa-solid fa-list"></i> Feed
+    </a> 
+    <a href="/posts/new-post/" class="{% if request.path == '/posts/new-post/' %}active{% endif %}">
+        <i class="fa-solid fa-square-plus"></i> Add
+    </a> 
+    <a href="/Monthly_challenges/months/" class="{% if request.path == '/Monthly_challenges/months/' or request.path == '/Monthly_challenges/challenges/' %}active{% endif %}">
+        <i class="fa-solid fa-calendar-days"></i> Challenges
+    </a> 
+    <form class="logout" action="{% url 'user:logout' %}" method="post">
+        {% csrf_token %}
+        <button class="logout-button" aria-label="User Logout" title="User Logout"><i class="fas fa-sign-out-alt"></i></button>
+    </form>
+    {% else %}
+    <a href="{% url 'user:register' %}" class="{% if request.path == '/user/register/' %}active{% endif %}">
+        <i class="fas fa-user-plus"></i> Register
+    </a> 
+    <a href="{% url 'user:login' %}" class="{% if request.path == '/user/login/' %}active{% endif %}">
+        <i class="fa-solid fa-right-to-bracket"></i> Login
+    </a> 
+    {% endif %}
+</nav>
+
+
+{% endif %}
+
+    <main>
+        {% block content %}
+        {% endblock  %}
+    </main>
+    
+</body>
+</html>

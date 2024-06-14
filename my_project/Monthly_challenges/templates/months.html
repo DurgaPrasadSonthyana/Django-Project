@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}
+  Months
+{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center; margin-top: 20px; font-weight:600">Monthly Challenges</h1>
+<div class="months-grid">
+    {% for month in months %}
+      <a class="list1" href="{% url 'challenges' %}?month={{ month }}">{{ month|capfirst }}</a>
+    {% endfor %}
+  </div> 
+
+{% endblock  %}
+
+

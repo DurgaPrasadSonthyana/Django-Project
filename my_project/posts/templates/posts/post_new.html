@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}
+ New Post
+{% endblock %}
+
+{% block content %}
+<section class="center-content">
+   <h1 style="font-weight:600; margin-top:20px;">Add Post</h1>
+   <form class="form-with-validation" action="{% url 'posts:new-post' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form }}
+   <div class="button-container">
+      <button class="form-submit">Submit</button>
+   </div> 
+   </form>
+</section>
+{% endblock  %}

@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}
+  {{ resume.title }}
+{% endblock %}
+
+{% block content %}
+<h1>Your Resumes</h1>
+<ul>
+    {% for resume in resumes %}
+        <li>{{ resume.title }}</li>
+    {% endfor %}
+</ul>
+{% endblock  %}
+
